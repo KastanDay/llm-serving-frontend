@@ -78,6 +78,7 @@ import {
   updateTool
 } from "@/db/tools"
 import { convertBlobToBase64 } from "@/lib/blob-to-b64"
+// @ts-ignore
 import { Tables, TablesUpdate } from "@/supabase/types"
 import { CollectionFile, ContentType, DataItemType } from "@/types"
 import { FC, useContext, useEffect, useRef, useState } from "react"

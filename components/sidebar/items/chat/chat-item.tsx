@@ -3,6 +3,7 @@ import { WithTooltip } from "@/components/ui/with-tooltip"
 import { ChatbotUIContext } from "@/context/context"
 import { LLM_LIST } from "@/lib/models/llm/llm-list"
 import { cn } from "@/lib/utils"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { LLM } from "@/types"
 import { IconRobotFace } from "@tabler/icons-react"

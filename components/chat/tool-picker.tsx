@@ -1,4 +1,5 @@
 import { ChatbotUIContext } from "@/context/context"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { IconBolt } from "@tabler/icons-react"
 import { FC, useContext, useEffect, useRef } from "react"

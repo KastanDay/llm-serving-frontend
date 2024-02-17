@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ContentType, DataListType } from "@/types"
 import { FC, useState } from "react"

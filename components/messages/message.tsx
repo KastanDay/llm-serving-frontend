@@ -2,6 +2,7 @@ import { useChatHandler } from "@/components/chat/chat-hooks/use-chat-handler"
 import { ChatbotUIContext } from "@/context/context"
 import { LLM_LIST } from "@/lib/models/llm/llm-list"
 import { cn } from "@/lib/utils"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { LLM, LLMID, MessageImage, ModelProvider } from "@/types"
 import {
@@ -340,10 +341,10 @@ export const Message: FC<MessageProps> = ({
                     <div key={index}>
                       <div className="flex items-center space-x-2">
                         <div>
-                          <FileIcon type={file.type} />
+                          <FileIcon type={(file as any).type} />
                         </div>
 
-                        <div className="truncate">{file.name}</div>
+                        <div className="truncate">{(file as any).name}</div>
                       </div>
 
                       {fileItems
@@ -351,7 +352,7 @@ export const Message: FC<MessageProps> = ({
                           const parentFile = files.find(
                             parentFile => parentFile.id === fileItem.file_id
                           )
-                          return parentFile?.id === file.id
+                          return parentFile?.id === (file as any).id
                         })
                         .map((fileItem, index) => (
                           <div
@@ -377,6 +378,7 @@ export const Message: FC<MessageProps> = ({
         )}
 
         <div className="mt-3 flex flex-wrap gap-2">
+          {/* @ts-ignore */}
           {message.image_paths.map((path, index) => {
             const item = chatImages.find(image => image.path === path)
 

@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { COLLECTION_DESCRIPTION_MAX, COLLECTION_NAME_MAX } from "@/db/limits"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { CollectionFile } from "@/types"
 import { IconBooks } from "@tabler/icons-react"

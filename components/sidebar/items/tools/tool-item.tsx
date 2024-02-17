@@ -3,6 +3,7 @@ import { Label } from "@/components/ui/label"
 import { TextareaAutosize } from "@/components/ui/textarea-autosize"
 import { TOOL_DESCRIPTION_MAX, TOOL_NAME_MAX } from "@/db/limits"
 import { validateOpenAPI } from "@/lib/openapi-conversion"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { IconBolt } from "@tabler/icons-react"
 import { FC, useState } from "react"

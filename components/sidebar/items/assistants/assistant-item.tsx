@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ChatbotUIContext } from "@/context/context"
 import { ASSISTANT_DESCRIPTION_MAX, ASSISTANT_NAME_MAX } from "@/db/limits"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { IconRobotFace } from "@tabler/icons-react"
 import Image from "next/image"

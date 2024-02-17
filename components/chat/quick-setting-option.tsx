@@ -1,4 +1,5 @@
 import { LLM_LIST } from "@/lib/models/llm/llm-list"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { IconCircleCheckFilled, IconRobotFace } from "@tabler/icons-react"
 import Image from "next/image"

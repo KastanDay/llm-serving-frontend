@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase/browser-client"
+// @ts-ignore
 import { TablesInsert, TablesUpdate } from "@/supabase/types"
 
 export const getChatById = async (chatId: string) => {

@@ -1,4 +1,5 @@
 import { ChatbotUIContext } from "@/context/context"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { FC, useContext, useEffect, useRef, useState } from "react"
 import { Button } from "../ui/button"
@@ -52,6 +53,7 @@ export const PromptPicker: FC<PromptPickerProps> = ({}) => {
     const matches = prompt.content.match(regex)
 
     if (matches) {
+      // @ts-ignore
       const newPromptVariables = matches.map(match => ({
         promptId: prompt.id,
         name: match.replace(/\{\{|\}\}/g, ""),

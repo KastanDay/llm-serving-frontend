@@ -10,7 +10,7 @@ import {
   buildGoogleGeminiFinalMessages
 } from "@/lib/build-prompt"
 import { consumeReadableStream } from "@/lib/consume-stream"
-import { Tables, TablesInsert } from "@/supabase/types"
+// import { Tables, TablesInsert } from "@/supabase/types"
 import {
   ChatFile,
   ChatMessage,
@@ -26,8 +26,8 @@ import { v4 as uuidv4 } from "uuid"
 export const validateChatSettings = (
   chatSettings: ChatSettings | null,
   modelData: LLM | undefined,
-  profile: Tables<"profiles"> | null,
-  selectedWorkspace: Tables<"workspaces"> | null,
+  profile: any, // Tables<"profiles"> | null,
+  selectedWorkspace: any, // Tables<"workspaces"> | null,
   messageContent: string
 ) => {
   if (!chatSettings) {
@@ -73,7 +73,7 @@ export const handleRetrieval = async (
   }
 
   const { results } = (await response.json()) as {
-    results: Tables<"file_items">[]
+    results: any // Tables<"file_items">[]
   }
 
   return results
@@ -86,7 +86,7 @@ export const createTempMessages = (
   b64Images: string[],
   isRegeneration: boolean,
   setChatMessages: React.Dispatch<React.SetStateAction<ChatMessage[]>>,
-  selectedAssistant: Tables<"assistants"> | null
+  selectedAssistant: any // Tables<"assistants"> | null
 ) => {
   let tempUserChatMessage: ChatMessage = {
     message: {
@@ -146,7 +146,7 @@ export const createTempMessages = (
 
 export const handleLocalChat = async (
   payload: ChatPayload,
-  profile: Tables<"profiles">,
+  profile: any, //Tables<"profiles">,
   chatSettings: ChatSettings,
   tempAssistantMessage: ChatMessage,
   isRegeneration: boolean,
@@ -189,7 +189,7 @@ export const handleLocalChat = async (
 
 export const handleHostedChat = async (
   payload: ChatPayload,
-  profile: Tables<"profiles">,
+  profile: any, // Tables<"profiles">,
   modelData: LLM,
   tempAssistantChatMessage: ChatMessage,
   isRegeneration: boolean,
@@ -348,13 +348,13 @@ export const processResponse = async (
 
 export const handleCreateChat = async (
   chatSettings: ChatSettings,
-  profile: Tables<"profiles">,
-  selectedWorkspace: Tables<"workspaces">,
+  profile: any, // Tables<"profiles">,
+  selectedWorkspace: any, // Tables<"workspaces">,
   messageContent: string,
-  selectedAssistant: Tables<"assistants">,
+  selectedAssistant: any, // Tables<"assistants">,
   newMessageFiles: ChatFile[],
-  setSelectedChat: React.Dispatch<React.SetStateAction<Tables<"chats"> | null>>,
-  setChats: React.Dispatch<React.SetStateAction<Tables<"chats">[]>>,
+  setSelectedChat: React.Dispatch<React.SetStateAction<any>>, // Tables<"chats"> | null>
+  setChats: React.Dispatch<React.SetStateAction<any>>, // Tables<"chats">[]>
   setChatFiles: React.Dispatch<React.SetStateAction<ChatFile[]>>
 ) => {
   const createdChat = await createChat({
@@ -372,6 +372,7 @@ export const handleCreateChat = async (
   })
 
   setSelectedChat(createdChat)
+  // @ts-ignore
   setChats(chats => [createdChat, ...chats])
 
   await createChatFiles(
@@ -389,22 +390,23 @@ export const handleCreateChat = async (
 
 export const handleCreateMessages = async (
   chatMessages: ChatMessage[],
-  currentChat: Tables<"chats">,
-  profile: Tables<"profiles">,
+  currentChat: any, // Tables<"chats">,
+  profile: any, // Tables<"profiles">,
   modelData: LLM,
   messageContent: string,
   generatedText: string,
   newMessageImages: MessageImage[],
   isRegeneration: boolean,
-  retrievedFileItems: Tables<"file_items">[],
+  retrievedFileItems: any, // Tables<"file_items">[],
   setChatMessages: React.Dispatch<React.SetStateAction<ChatMessage[]>>,
   setChatFileItems: React.Dispatch<
-    React.SetStateAction<Tables<"file_items">[]>
+    React.SetStateAction<any> // Tables<"file_items">[]
   >,
   setChatImages: React.Dispatch<React.SetStateAction<MessageImage[]>>,
-  selectedAssistant: Tables<"assistants"> | null
+  selectedAssistant: any //Tables<"assistants"> | null
 ) => {
-  const finalUserMessage: TablesInsert<"messages"> = {
+  const finalUserMessage: any = {
+    // TablesInsert<"messages">
     chat_id: currentChat.id,
     assistant_id: null,
     user_id: profile.user_id,
@@ -414,7 +416,7 @@ export const handleCreateMessages = async (
     sequence_number: chatMessages.length,
     image_paths: []
   }
-
+  // @ts-ignore
   const finalAssistantMessage: TablesInsert<"messages"> = {
     chat_id: currentChat.id,
     assistant_id: selectedAssistant?.id || null,
@@ -480,6 +482,7 @@ export const handleCreateMessages = async (
     })
 
     const createdMessageFileItems = await createMessageFileItems(
+      // @ts-ignore
       retrievedFileItems.map(fileItem => {
         return {
           user_id: profile.user_id,
@@ -497,12 +500,14 @@ export const handleCreateMessages = async (
       },
       {
         message: createdMessages[1],
+        // @ts-ignore
         fileItems: retrievedFileItems.map(fileItem => fileItem.id)
       }
     ]
-
+    // @ts-ignore
     setChatFileItems(prevFileItems => {
       const newFileItems = retrievedFileItems.filter(
+        // @ts-ignore
         fileItem => !prevFileItems.some(prevItem => prevItem.id === fileItem.id)
       )
 

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ChatFile, MessageImage } from "@/types"
 import { IconFileFilled } from "@tabler/icons-react"

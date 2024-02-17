@@ -5,6 +5,7 @@ import { getAssistantToolsByAssistantId } from "@/db/assistant-tools"
 import { getCollectionFilesByCollectionId } from "@/db/collection-files"
 import useHotkey from "@/lib/hooks/use-hotkey"
 import { LLM_LIST } from "@/lib/models/llm/llm-list"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { LLMID } from "@/types"
 import { IconChevronDown, IconRobotFace } from "@tabler/icons-react"

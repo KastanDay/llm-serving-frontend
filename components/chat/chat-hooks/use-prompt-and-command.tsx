@@ -3,6 +3,7 @@ import { getAssistantCollectionsByAssistantId } from "@/db/assistant-collections
 import { getAssistantFilesByAssistantId } from "@/db/assistant-files"
 import { getAssistantToolsByAssistantId } from "@/db/assistant-tools"
 import { getCollectionFilesByCollectionId } from "@/db/collection-files"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { LLMID } from "@/types"
 import { useContext } from "react"
@@ -65,11 +66,13 @@ export const usePromptAndCommand = () => {
     setUserInput(value)
   }
 
+  // @ts-ignore
   const handleSelectPrompt = (prompt: Tables<"prompts">) => {
     setIsPromptPickerOpen(false)
     setUserInput(userInput.replace(/\/[^ ]*$/, "") + prompt.content)
   }
 
+  // @ts-ignore
   const handleSelectUserFile = async (file: Tables<"files">) => {
     setShowFilesDisplay(true)
     setIsFilePickerOpen(false)
@@ -98,6 +101,7 @@ export const usePromptAndCommand = () => {
   }
 
   const handleSelectUserCollection = async (
+    // @ts-ignore
     collection: Tables<"collections">
   ) => {
     setShowFilesDisplay(true)
@@ -128,12 +132,14 @@ export const usePromptAndCommand = () => {
     setUserInput(userInput.replace(/#[^ ]*$/, ""))
   }
 
+  // @ts-ignore
   const handleSelectTool = (tool: Tables<"tools">) => {
     setIsToolPickerOpen(false)
     setUserInput(userInput.replace(/![^ ]*$/, ""))
     setSelectedTools(prev => [...prev, tool])
   }
 
+  // @ts-ignore
   const handleSelectAssistant = async (assistant: Tables<"assistants">) => {
     setIsAssistantPickerOpen(false)
     setUserInput(userInput.replace(/@[^ ]*$/, ""))

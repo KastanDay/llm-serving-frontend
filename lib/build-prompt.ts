@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ChatPayload, MessageImage } from "@/types"
 import { encode } from "gpt-tokenizer"

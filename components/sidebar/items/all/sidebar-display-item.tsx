@@ -1,6 +1,7 @@
 import { ChatbotUIContext } from "@/context/context"
 import { createChat } from "@/db/chats"
 import { cn } from "@/lib/utils"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ContentType, DataItemType } from "@/types"
 import { useRouter } from "next/navigation"

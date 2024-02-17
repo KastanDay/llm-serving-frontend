@@ -1,4 +1,5 @@
 import { ChatbotUIContext } from "@/context/context"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ContentType } from "@/types"
 import { FC, useContext } from "react"

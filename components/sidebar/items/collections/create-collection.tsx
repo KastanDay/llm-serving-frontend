@@ -3,6 +3,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ChatbotUIContext } from "@/context/context"
 import { COLLECTION_DESCRIPTION_MAX, COLLECTION_NAME_MAX } from "@/db/limits"
+// @ts-ignore
+// @ts-ignore
 import { TablesInsert } from "@/supabase/types"
 import { CollectionFile } from "@/types"
 import { FC, useContext, useState } from "react"

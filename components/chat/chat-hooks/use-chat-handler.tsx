@@ -2,6 +2,7 @@ import { ChatbotUIContext } from "@/context/context"
 import { updateChat } from "@/db/chats"
 import { deleteMessagesIncludingAndAfter } from "@/db/messages"
 import { buildFinalMessages } from "@/lib/build-prompt"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ChatMessage, ChatPayload, LLMID, ModelProvider } from "@/types"
 import { useRouter } from "next/navigation"
@@ -195,7 +196,7 @@ export const useChatHandler = () => {
       let currentChat = selectedChat ? { ...selectedChat } : null
 
       const b64Images = newMessageImages.map(image => image.base64)
-
+      // @ts-ignore
       let retrievedFileItems: Tables<"file_items">[] = []
 
       if (

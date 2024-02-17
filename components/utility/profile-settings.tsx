@@ -43,9 +43,9 @@ import { TextareaAutosize } from "../ui/textarea-autosize"
 import { WithTooltip } from "../ui/with-tooltip"
 import { ThemeSwitcher } from "./theme-switcher"
 
-interface ProfileSettingsProps { }
+interface ProfileSettingsProps {}
 
-export const ProfileSettings: FC<ProfileSettingsProps> = ({ }) => {
+export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
   const {
     profile,
     setProfile,

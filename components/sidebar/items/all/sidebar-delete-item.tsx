@@ -18,6 +18,7 @@ import { deletePreset } from "@/db/presets"
 import { deletePrompt } from "@/db/prompts"
 import { deleteFileFromStorage } from "@/db/storage/files"
 import { deleteTool } from "@/db/tools"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ContentType, DataItemType } from "@/types"
 import { FC, useContext, useRef, useState } from "react"

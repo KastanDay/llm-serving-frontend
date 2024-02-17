@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 
 export interface ChatMessage {

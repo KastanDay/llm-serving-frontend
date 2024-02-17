@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase/browser-client"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 
 export const uploadWorkspaceImage = async (

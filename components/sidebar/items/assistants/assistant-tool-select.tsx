@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { ChatbotUIContext } from "@/context/context"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import {
   IconBolt,

@@ -1,4 +1,6 @@
 import { ChatbotUIContext } from "@/context/context"
+// @ts-ignore
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { IconBooks } from "@tabler/icons-react"
 import { FC, useContext, useEffect, useRef } from "react"

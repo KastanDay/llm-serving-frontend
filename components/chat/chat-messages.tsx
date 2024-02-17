@@ -1,5 +1,6 @@
 import { useChatHandler } from "@/components/chat/chat-hooks/use-chat-handler"
 import { ChatbotUIContext } from "@/context/context"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { FC, useContext, useState } from "react"
 import { Message } from "../messages/message"

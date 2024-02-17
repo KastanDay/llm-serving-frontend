@@ -8,8 +8,7 @@ export type LLMID =
   | PerplexityLLMID
   | VLLMLLMID
 
-export type VLLMLLMID =
-  | "meta-llama/Llama-2-13b-chat-hf"
+export type VLLMLLMID = "meta-llama/Llama-2-13b-chat-hf"
 
 // OpenAI Models (UPDATED 1/29/24)
 export type OpenAILLMID =

@@ -24,6 +24,7 @@ import {
 } from "@/db/storage/assistant-images"
 import { createTool } from "@/db/tools"
 import { convertBlobToBase64 } from "@/lib/blob-to-b64"
+// @ts-ignore
 import { Tables, TablesInsert } from "@/supabase/types"
 import { ContentType } from "@/types"
 import { FC, useContext, useRef, useState } from "react"

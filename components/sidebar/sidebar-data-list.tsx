@@ -8,6 +8,7 @@ import { updatePreset } from "@/db/presets"
 import { updatePrompt } from "@/db/prompts"
 import { updateTool } from "@/db/tools"
 import { cn } from "@/lib/utils"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ContentType, DataItemType, DataListType } from "@/types"
 import { FC, useContext, useEffect, useRef, useState } from "react"

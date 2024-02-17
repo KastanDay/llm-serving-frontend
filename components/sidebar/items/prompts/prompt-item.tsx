@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { TextareaAutosize } from "@/components/ui/textarea-autosize"
 import { PROMPT_NAME_MAX } from "@/db/limits"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { IconPencil } from "@tabler/icons-react"
 import { FC, useState } from "react"

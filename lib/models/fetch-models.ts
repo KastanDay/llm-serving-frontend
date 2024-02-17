@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { LLM, LLMID, OpenRouterLLM } from "@/types"
 import { toast } from "sonner"

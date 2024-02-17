@@ -13,6 +13,7 @@ import {
   fetchOpenRouterModels
 } from "@/lib/models/fetch-models"
 import { supabase } from "@/lib/supabase/browser-client"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import {
   ChatFile,

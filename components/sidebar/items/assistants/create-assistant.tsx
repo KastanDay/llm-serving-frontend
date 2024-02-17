@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ChatbotUIContext } from "@/context/context"
 import { ASSISTANT_DESCRIPTION_MAX, ASSISTANT_NAME_MAX } from "@/db/limits"
+// @ts-ignore
 import { Tables, TablesInsert } from "@/supabase/types"
 import { FC, useContext, useEffect, useState } from "react"
 import { AssistantRetrievalSelect } from "./assistant-retrieval-select"

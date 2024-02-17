@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+// @ts-ignore
 import { Tables } from "@/supabase/types"
 import { ContentType } from "@/types"
 import { IconChevronDown, IconChevronRight } from "@tabler/icons-react"

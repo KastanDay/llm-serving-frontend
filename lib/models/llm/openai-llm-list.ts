@@ -53,4 +53,10 @@ const LLAMA: LLM = {
   imageInput: false
 }
 
-export const OPENAI_LLM_LIST: LLM[] = [GPT4Turbo, GPT4Vision, GPT4, GPT3_5Turbo, LLAMA]
+export const OPENAI_LLM_LIST: LLM[] = [
+  GPT4Turbo,
+  GPT4Vision,
+  GPT4,
+  GPT3_5Turbo,
+  LLAMA
+]

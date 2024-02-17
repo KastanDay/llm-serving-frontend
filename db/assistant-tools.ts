@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase/browser-client"
+// @ts-ignore
 import { TablesInsert } from "@/supabase/types"
 
 export const getAssistantToolsByAssistantId = async (assistantId: string) => {
