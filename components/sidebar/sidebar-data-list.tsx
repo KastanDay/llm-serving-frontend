@@ -27,12 +27,14 @@ interface SidebarDataListProps {
   contentType: ContentType
   data: DataListType
   folders: Tables<"folders">[]
+  default_data: DataListType
 }
 
 export const SidebarDataList: FC<SidebarDataListProps> = ({
   contentType,
   data,
-  folders
+  folders,
+  default_data
 }) => {
   const {
     setChats,
@@ -42,7 +44,8 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
     setCollections,
     setAssistants,
     setTools,
-    setModels
+    setModels,
+    setPublicModels
   } = useContext(ChatbotUIContext)
 
   const divRef = useRef<HTMLDivElement>(null)
@@ -52,7 +55,8 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
 
   const getDataListComponent = (
     contentType: ContentType,
-    item: DataItemType
+    item: DataItemType,
+    is_default: boolean = false
   ) => {
     switch (contentType) {
       case "chats":
@@ -87,6 +91,15 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
         return <ToolItem key={item.id} tool={item as Tables<"tools">} />
 
       case "models":
+        if (is_default) {
+          return (
+            <ModelItem
+              key={item.id}
+              model={item as Tables<"public_models">}
+              isDefault={true}
+            />
+          )
+        }
         return <ModelItem key={item.id} model={item as Tables<"models">} />
 
       default:
@@ -152,7 +165,8 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
     collections: setCollections,
     assistants: setAssistants,
     tools: setTools,
-    models: setModels
+    models: setModels,
+    publicModels: setPublicModels
   }
 
   const updateFolder = async (itemId: string, folderId: string | null) => {
@@ -225,7 +239,7 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
         className="mt-2 flex flex-col overflow-auto"
         onDrop={handleDrop}
       >
-        {data.length === 0 && (
+        {data.length === 0 && default_data.length === 0 && (
           <div className="flex grow flex-col items-center justify-center">
             <div className=" text-centertext-muted-foreground p-8 text-lg italic">
               No {contentType}.
@@ -331,6 +345,25 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
             )}
           </div>
         )}
+        <div
+          className={cn("flex grow flex-col", isDragOver && "bg-accent")}
+          onDrop={handleDrop}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
+          onDragOver={handleDragOver}
+        >
+          {default_data.map(item => {
+            return (
+              <div
+                key={item.id}
+                draggable
+                onDragStart={e => handleDragStart(e, item.id)}
+              >
+                {getDataListComponent(contentType, item, true)}
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       <div

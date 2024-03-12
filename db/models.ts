@@ -56,6 +56,21 @@ export const getModelWorkspacesByModelId = async (modelId: string) => {
   return model
 }
 
+export const getPublicModels = async () => {
+  const { data: public_models, error } = await supabase
+    .from("public_models")
+    .select("*")
+
+  console.log("public_models: ", public_models)
+  console.log("error: ", error)
+
+  if (!public_models) {
+    throw new Error(error.message)
+  }
+
+  return public_models
+}
+
 export const createModel = async (
   model: TablesInsert<"models">,
   workspace_id: string

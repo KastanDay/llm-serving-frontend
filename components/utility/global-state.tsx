@@ -46,6 +46,9 @@ export const GlobalState: FC<GlobalStateProps> = ({ children }) => {
   const [files, setFiles] = useState<Tables<"files">[]>([])
   const [folders, setFolders] = useState<Tables<"folders">[]>([])
   const [models, setModels] = useState<Tables<"models">[]>([])
+  const [publicModels, setPublicModels] = useState<Tables<"public_models">[]>(
+    []
+  )
   const [presets, setPresets] = useState<Tables<"presets">[]>([])
   const [prompts, setPrompts] = useState<Tables<"prompts">[]>([])
   const [tools, setTools] = useState<Tables<"tools">[]>([])
@@ -218,6 +221,8 @@ export const GlobalState: FC<GlobalStateProps> = ({ children }) => {
         setFolders,
         models,
         setModels,
+        publicModels,
+        setPublicModels,
         presets,
         setPresets,
         prompts,
