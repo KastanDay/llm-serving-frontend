@@ -60,9 +60,7 @@ export const getPublicModels = async () => {
   const { data: public_models, error } = await supabase
     .from("public_models")
     .select("*")
-
-  console.log("public_models: ", public_models)
-  console.log("error: ", error)
+    .range(0, 10)
 
   if (!public_models) {
     throw new Error(error.message)
