@@ -185,7 +185,7 @@ export const useChatHandler = () => {
         ...availableLocalModels,
         ...availableOpenRouterModels,
         ...publicModels.map(model => ({
-          modelId: model.name as LLMID,
+          modelId: model.model_id as LLMID,
           modelName: model.name,
           provider: "public" as ModelProvider,
           hostedId: model.id,
