@@ -27,7 +27,8 @@ export const ModelSelect: FC<ModelSelectProps> = ({
     models,
     availableHostedModels,
     availableLocalModels,
-    availableOpenRouterModels
+    availableOpenRouterModels,
+    publicModels
   } = useContext(ChatbotUIContext)
 
   const inputRef = useRef<HTMLInputElement>(null)
@@ -61,7 +62,15 @@ export const ModelSelect: FC<ModelSelectProps> = ({
     })),
     ...availableHostedModels,
     ...availableLocalModels,
-    ...availableOpenRouterModels
+    ...availableOpenRouterModels,
+    ...publicModels.map(model => ({
+      modelId: model.name as LLMID,
+      modelName: model.name,
+      provider: "public" as ModelProvider,
+      hostedId: model.id,
+      platformLink: "",
+      imageInput: false
+    }))
   ]
 
   const groupedModels = allModels.reduce<Record<string, LLM[]>>(
@@ -81,6 +90,8 @@ export const ModelSelect: FC<ModelSelectProps> = ({
   )
 
   if (!profile) return null
+
+  console.log("models: ", groupedModels)
 
   return (
     <DropdownMenu
