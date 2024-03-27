@@ -352,6 +352,9 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
           onDragLeave={handleDragLeave}
           onDragOver={handleDragOver}
         >
+          <div className="ml-3 mt-4 flex-1 truncate text-xs font-semibold text-neutral-300">
+            Default {contentType}
+          </div>
           {default_data.map(item => {
             return (
               <div

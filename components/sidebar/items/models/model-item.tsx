@@ -105,15 +105,10 @@ export const ModelItem: FC<ModelItemProps> = ({ model, isDefault = false }) => {
         />
       )}
       {model.type === Tables<"public_models"> && isDefault && (
-        <>
-          <div className="ml-3 mt-4 flex-1 truncate text-xs font-semibold text-neutral-300">
-            Default Models:
-          </div>
-          <SidebarDefaultItem
-            item={model}
-            icon={<IconSparkles height={30} width={30} />}
-          />
-        </>
+        <SidebarDefaultItem
+          item={model}
+          icon={<IconSparkles height={30} width={30} />}
+        />
       )}
     </>
   )
