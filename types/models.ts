@@ -7,3 +7,4 @@ export type ModelProvider =
   | "ollama"
   | "openrouter"
   | "custom"
+  | "public"

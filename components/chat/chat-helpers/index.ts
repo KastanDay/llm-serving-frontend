@@ -219,12 +219,16 @@ export const handleHostedChat = async (
   }
 
   const apiEndpoint =
-    provider === "custom" ? "/api/chat/custom" : `/api/chat/${provider}`
+    provider === "custom" || "public"
+      ? "/api/chat/custom"
+      : `/api/chat/${provider}`
 
   const requestBody = {
     chatSettings: payload.chatSettings,
     messages: formattedMessages,
-    customModelId: provider === "custom" ? modelData.hostedId : ""
+    customModelId:
+      provider === "custom" || provider === "public" ? modelData.hostedId : "",
+    isPublic: provider === "public"
   }
 
   const response = await fetchChatResponse(

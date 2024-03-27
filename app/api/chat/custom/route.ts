@@ -10,10 +10,11 @@ export const runtime: ServerRuntime = "edge"
 
 export async function POST(request: Request) {
   const json = await request.json()
-  const { chatSettings, messages, customModelId } = json as {
+  const { chatSettings, messages, customModelId, isPublic } = json as {
     chatSettings: ChatSettings
     messages: any[]
     customModelId: string
+    isPublic: boolean
   }
 
   try {
@@ -23,7 +24,7 @@ export async function POST(request: Request) {
     )
 
     const { data: customModel, error } = await supabaseAdmin
-      .from("models")
+      .from(isPublic ? "public_models" : "models")
       .select("*")
       .eq("id", customModelId)
       .single()

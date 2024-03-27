@@ -10,12 +10,14 @@ interface SidebarContentProps {
   contentType: ContentType
   data: DataListType
   folders: Tables<"folders">[]
+  default_data: DataListType
 }
 
 export const SidebarContent: FC<SidebarContentProps> = ({
   contentType,
   data,
-  folders
+  folders,
+  default_data
 }) => {
   const [searchTerm, setSearchTerm] = useState("")
 
@@ -45,6 +47,7 @@ export const SidebarContent: FC<SidebarContentProps> = ({
         contentType={contentType}
         data={filteredData}
         folders={folders}
+        default_data={default_data}
       />
     </div>
   )

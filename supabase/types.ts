@@ -937,6 +937,39 @@ export interface Database {
           }
         ]
       }
+      public_models: {
+        Row: {
+          id: string
+          name: string
+          description: string
+          model_id: string 
+          api_key: string 
+          base_url: string
+          context_length: number
+          created_at: string
+          updated_at: string | null
+        }
+        Insert: {
+          name: string
+          description: string
+          model_id: string
+          api_key: string
+          base_url: string
+          context_length?: number
+          created_at?: string
+          updated_at?: string | null
+        }
+        Update: {
+          name?: string
+          description?: string
+          model_id?: string
+          api_key?: string
+          base_url?: string
+          context_length?: number
+          updated_at?: string | null
+        }
+        Relationships: [] // No relationships as it's independent
+      }
       preset_workspaces: {
         Row: {
           created_at: string

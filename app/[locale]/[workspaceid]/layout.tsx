@@ -7,7 +7,7 @@ import { getChatsByWorkspaceId } from "@/db/chats"
 import { getCollectionWorkspacesByWorkspaceId } from "@/db/collections"
 import { getFileWorkspacesByWorkspaceId } from "@/db/files"
 import { getFoldersByWorkspaceId } from "@/db/folders"
-import { getModelWorkspacesByWorkspaceId } from "@/db/models"
+import { getModelWorkspacesByWorkspaceId, getPublicModels } from "@/db/models"
 import { getPresetWorkspacesByWorkspaceId } from "@/db/presets"
 import { getPromptWorkspacesByWorkspaceId } from "@/db/prompts"
 import { getAssistantImageFromStorage } from "@/db/storage/assistant-images"
@@ -42,6 +42,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     setPrompts,
     setTools,
     setModels,
+    setPublicModels,
     selectedWorkspace,
     setSelectedWorkspace,
     setSelectedChat,
@@ -154,6 +155,9 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
     const modelData = await getModelWorkspacesByWorkspaceId(workspaceId)
     setModels(modelData.models)
+
+    const publicModels = await getPublicModels()
+    setPublicModels(publicModels)
 
     setChatSettings({
       model: (workspace?.default_model || "gpt-4-1106-preview") as LLMID,

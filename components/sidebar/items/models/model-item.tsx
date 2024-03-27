@@ -6,12 +6,14 @@ import { Tables, TablesUpdate } from "@/supabase/types"
 import { IconSparkles } from "@tabler/icons-react"
 import { FC, useState } from "react"
 import { SidebarItem } from "../all/sidebar-display-item"
+import { SidebarDefaultItem } from "../all/sidebar-default-display-item"
 
 interface ModelItemProps {
-  model: Tables<"models">
+  model: Tables<"models"> | Tables<"public_models">
+  isDefault?: boolean
 }
 
-export const ModelItem: FC<ModelItemProps> = ({ model }) => {
+export const ModelItem: FC<ModelItemProps> = ({ model, isDefault = false }) => {
   const [isTyping, setIsTyping] = useState(false)
 
   const [apiKey, setApiKey] = useState(model.api_key)
@@ -22,82 +24,92 @@ export const ModelItem: FC<ModelItemProps> = ({ model }) => {
   const [contextLength, setContextLength] = useState(model.context_length)
 
   return (
-    <SidebarItem
-      item={model}
-      isTyping={isTyping}
-      contentType="models"
-      icon={<IconSparkles height={30} width={30} />}
-      updateState={
-        {
-          api_key: apiKey,
-          base_url: baseUrl,
-          description,
-          context_length: contextLength,
-          model_id: modelId,
-          name
-        } as TablesUpdate<"models">
-      }
-      renderInputs={() => (
-        <>
-          <div className="space-y-1">
-            <Label>Name</Label>
+    <>
+      {model.type === Tables<"models"> && !isDefault && (
+        <SidebarItem
+          item={model}
+          isTyping={isTyping}
+          contentType="models"
+          icon={<IconSparkles height={30} width={30} />}
+          updateState={
+            {
+              api_key: apiKey,
+              base_url: baseUrl,
+              description,
+              context_length: contextLength,
+              model_id: modelId,
+              name
+            } as TablesUpdate<"models">
+          }
+          renderInputs={() => (
+            <>
+              <div className="space-y-1">
+                <Label>Name</Label>
 
-            <Input
-              placeholder="Model name..."
-              value={name}
-              onChange={e => setName(e.target.value)}
-              maxLength={MODEL_NAME_MAX}
-            />
-          </div>
+                <Input
+                  placeholder="Model name..."
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  maxLength={MODEL_NAME_MAX}
+                />
+              </div>
 
-          <div className="space-y-1">
-            <Label>Model ID</Label>
+              <div className="space-y-1">
+                <Label>Model ID</Label>
 
-            <Input
-              placeholder="Model ID..."
-              value={modelId}
-              onChange={e => setModelId(e.target.value)}
-            />
-          </div>
+                <Input
+                  placeholder="Model ID..."
+                  value={modelId}
+                  onChange={e => setModelId(e.target.value)}
+                />
+              </div>
 
-          <div className="space-y-1">
-            <Label>Base URL</Label>
+              <div className="space-y-1">
+                <Label>Base URL</Label>
 
-            <Input
-              placeholder="Base URL..."
-              value={baseUrl}
-              onChange={e => setBaseUrl(e.target.value)}
-            />
+                <Input
+                  placeholder="Base URL..."
+                  value={baseUrl}
+                  onChange={e => setBaseUrl(e.target.value)}
+                />
 
-            <div className="pt-1 text-xs italic">
-              Your API must be compatible with the OpenAI SDK.
-            </div>
-          </div>
+                <div className="pt-1 text-xs italic">
+                  Your API must be compatible with the OpenAI SDK.
+                </div>
+              </div>
 
-          <div className="space-y-1">
-            <Label>API Key</Label>
+              <div className="space-y-1">
+                <Label>API Key</Label>
 
-            <Input
-              type="password"
-              placeholder="API Key..."
-              value={apiKey}
-              onChange={e => setApiKey(e.target.value)}
-            />
-          </div>
+                <Input
+                  type="password"
+                  placeholder="API Key..."
+                  value={apiKey}
+                  onChange={e => setApiKey(e.target.value)}
+                />
+              </div>
 
-          <div className="space-y-1">
-            <Label>Max Context Length</Label>
+              <div className="space-y-1">
+                <Label>Max Context Length</Label>
 
-            <Input
-              type="number"
-              placeholder="4096"
-              min={0}
-              value={contextLength}
-              onChange={e => setContextLength(parseInt(e.target.value))}
-            />
-          </div>
-        </>
+                <Input
+                  type="number"
+                  placeholder="4096"
+                  min={0}
+                  value={contextLength}
+                  onChange={e => setContextLength(parseInt(e.target.value))}
+                />
+              </div>
+            </>
+          )}
+        />
       )}
-    />
+      {model.type === Tables<"public_models"> && isDefault && (
+        <SidebarDefaultItem
+          item={model}
+          icon={<IconSparkles height={30} width={30} />}
+        />
+      )}
+    </>
   )
 }
