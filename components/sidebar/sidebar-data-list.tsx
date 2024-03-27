@@ -345,28 +345,30 @@ export const SidebarDataList: FC<SidebarDataListProps> = ({
             )}
           </div>
         )}
-        <div
-          className={cn("flex grow flex-col", isDragOver && "bg-accent")}
-          onDrop={handleDrop}
-          onDragEnter={handleDragEnter}
-          onDragLeave={handleDragLeave}
-          onDragOver={handleDragOver}
-        >
-          <div className="ml-3 mt-4 flex-1 truncate text-xs font-semibold text-neutral-300">
-            Default {contentType}
+        {default_data.length > 0 && (
+          <div
+            className={cn("flex grow flex-col", isDragOver && "bg-accent")}
+            onDrop={handleDrop}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
+          >
+            <div className="ml-3 mt-4 flex-1 truncate text-xs font-semibold text-neutral-300">
+              Default {contentType}
+            </div>
+            {default_data.map(item => {
+              return (
+                <div
+                  key={item.id}
+                  draggable
+                  onDragStart={e => handleDragStart(e, item.id)}
+                >
+                  {getDataListComponent(contentType, item, true)}
+                </div>
+              )
+            })}
           </div>
-          {default_data.map(item => {
-            return (
-              <div
-                key={item.id}
-                draggable
-                onDragStart={e => handleDragStart(e, item.id)}
-              >
-                {getDataListComponent(contentType, item, true)}
-              </div>
-            )
-          })}
-        </div>
+        )}
       </div>
 
       <div
